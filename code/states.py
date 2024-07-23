@@ -31,9 +31,12 @@ class Title_Screen(GameState):
 class Game(GameState):
     def __init__(self, screen: pygame.Surface) -> None:
         super().__init__(screen)
+        self.player_rock = Rocky()
+        self.player_group = pygame.sprite.GroupSingle(self.player_rock)
+        self.enemies = pygame.sprite.Group()
+        self.enemy_timer = pygame.USEREVENT + 1
+        pygame.time.set_timer(self.enemy_timer,1500)
 
 class Play_Again_Screen(GameState):
     def __init__(self, screen: pygame.Surface) -> None:
         super().__init__(screen)
-        self.player_rock = Rocky()
-        self.enemies = []
