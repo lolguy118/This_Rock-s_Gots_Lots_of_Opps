@@ -64,7 +64,7 @@ class Enemy(pygame.sprite.Sprite):
         self.animation_index += 0.1
         if self.animation_index >= len(self.frames):
             self.animation_index = 0
-        self.image = self.frames[self.animation_index]
+        self.image = self.frames[int(self.animation_index)]
 
     def update(self) -> None:
         self.animate()
@@ -82,19 +82,3 @@ class Enemy(pygame.sprite.Sprite):
     def destroy(self):
         if self.rect.right <= -10:
             self.kill()
-
-
-pygame.init()
-screen = pygame.display.set_mode((800, 450))
-rocky = pygame.sprite.GroupSingle(Rocky())
-
-while True:
-    events: EventInfo = {"events": pygame.event.get()}
-    for event in events["events"]:
-        if event.type == pygame.QUIT:
-            raise SystemExit
-
-    screen.fill("black")
-    rocky.draw(screen)
-    rocky.update(events)
-    pygame.display.update()
