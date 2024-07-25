@@ -1,10 +1,12 @@
 from abc import ABC, abstractmethod
 from typing import Any
 import pygame
+import pygame.tests
 from event_info import EventInfo
 from entities import Rocky, Enemy
 from random import choice
 from button import Button
+import json
 
 
 class GameState(ABC):
@@ -110,3 +112,24 @@ class Main_Game(GameState):
 class Play_Again_Screen(GameState):
     def __init__(self, screen: pygame.Surface, score: int) -> None:
         super().__init__(screen)
+        self.score = score
+        self.score_font = pygame.font.Font("..\\assets\\other\\Freedom-10eM.ttf", 50)
+        
+        with open("data.json", "r") as data_json:
+            data = json.load(data_json)
+            self.high_score = data["high_score"]
+        if self.score > self.high_score:
+            self.high_score = self.score
+            with open("data.json", "w") as data_json:
+                json.dump({"high_score" : self.high_score}, data_json, indent=4)
+
+        self.score_surf = self.score_font.render(f"Score: {self.score}", True, "white")
+        self.score_rect = self.score_surf.get_rect(midbottom=(400, 225))
+        
+        if self.score == self.high_score:
+            self.high_score_surf = self.score_font.render(f"NEW HIGH SCORE: {self.high_score}", True, "white")
+        else:
+            self.high_score_surf = self.score_font.render(f"High Score: {self.high_score}", True, "white")
+        self.high_score_rect = self.high_score_surf.get_rect(midtop=(400, 225))
+
+        self.play_again_button = Button("midtop", (400, 300), (0, 0), ("..\\assets\\play_button\\play_button.png", "..\\assets\\play_button\\play_button_while_hovering.png"))
