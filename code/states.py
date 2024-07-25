@@ -133,3 +133,18 @@ class Play_Again_Screen(GameState):
         self.high_score_rect = self.high_score_surf.get_rect(midtop=(400, 225))
 
         self.play_again_button = Button("midtop", (400, 300), (0, 0), ("..\\assets\\play_button\\play_button.png", "..\\assets\\play_button\\play_button_while_hovering.png"))
+    
+    def update(self, event_info: EventInfo) -> None:
+        self.play_again_button.update(event_info)
+        
+        if self.play_again_button.clicked:
+            self.is_over = True
+    
+    def next_game_state(self) -> Any:
+        return Main_Game(self.screen)
+    
+    def draw(self) -> None:
+        self.screen.blit(self.sky_surf, (0, 0))
+        self.play_again_button.draw(self.screen)
+        self.screen.blit(self.score_surf, self.score_rect)
+        self.screen.blit(self.high_score_surf, self.high_score_rect)
