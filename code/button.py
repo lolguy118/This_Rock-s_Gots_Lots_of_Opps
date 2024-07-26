@@ -15,7 +15,23 @@ class Button:
         self.hover = False
         self.clicked = False
     def rectangle_get(self) -> None:
-        setattr(self.rect, self.pos_used_to_place, self.xy)
+        match self.pos_used_to_place:
+            case "center":
+                self.rect.center = self.xy
+            case "topleft":
+                self.rect.topleft = self.xy
+            case "topright":
+                self.rect.topright = self.xy
+            case "midright":
+                self.rect.midright = self.xy
+            case "bottomright":
+                self.rect.bottomright = self.xy
+            case "midbottom":
+                self.rect.midbottom = self.xy
+            case "bottomleft":
+                self.rect.bottomleft = self.xy
+            case "midleft":
+                self.rect.midleft = self.xy
     
     def update(self, event_info : EventInfo) -> None:
         mouse_pos = event_info["mouse_pos"]
