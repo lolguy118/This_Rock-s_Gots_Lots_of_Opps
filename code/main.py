@@ -1,5 +1,6 @@
 import pygame
 from states import Title_Screen
+import states
 
 
 class Game:
@@ -28,7 +29,8 @@ class Game:
             self.current_game_state.update(event_info)
 
             if self.current_game_state.is_over:
-                self.current_game_state.next_game_state()
+                print("ligam")
+                self.current_game_state = self.current_game_state.next_game_state()
 
             self.current_game_state.draw()
             

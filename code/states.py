@@ -32,15 +32,15 @@ class Title_Screen(GameState):
     def __init__(self, screen: pygame.Surface) -> None:
         super().__init__(screen)
 
-        self.font = pygame.font.Font("..\\assets\\other\\Freedom-10eM.ttf", 100)
-        self.text_surf = self.font.render("This Rock's Got \n Lots O' Opps", True, "white")
+        self.font = pygame.font.Font("..\\assets\\other\\Freedom-10eM.ttf", 50)
+        self.text_surf = self.font.render("This Rock's Got Lots O' Opps", True, "white")
         self.text_rect = self.text_surf.get_rect(midtop=(400, 100))
         self.text_velocity = -1
 
         self.play_button = Button(
             "center",
             (400, 300),
-            (400, 200),
+            (500, 275),
             (
                 "..\\assets\\play_button\\play_button.png",
                 "..\\assets\\play_button\\play_button_while_hovering.png",
@@ -54,7 +54,7 @@ class Title_Screen(GameState):
 
         self.text_rect.centery += self.text_velocity
 
-        if self.text_rect.top <= 50 or self.text_rect.bottom >= 150:
+        if self.text_rect.top <= 10 or self.text_rect.bottom >= 200:
             self.text_velocity = -self.text_velocity
 
     def next_game_state(self) -> Any:
