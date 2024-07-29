@@ -13,7 +13,7 @@ class GameState(ABC):
     def __init__(self, screen: pygame.Surface) -> None:
         self.screen = screen
         self.is_over = False
-        self.sky_surf = pygame.image.load("..\\assets\\background\\sky.png")
+        self.sky_surf = pygame.image.load("..//assets//background//sky.png")
 
     @abstractmethod
     def update(self, event_info: EventInfo) -> None:
@@ -32,7 +32,7 @@ class Title_Screen(GameState):
     def __init__(self, screen: pygame.Surface) -> None:
         super().__init__(screen)
 
-        self.font = pygame.font.Font("..\\assets\\other\\Freedom-10eM.ttf", 50)
+        self.font = pygame.font.Font("..//assets//other//Freedom-10eM.ttf", 50)
         self.text_surf = self.font.render("This Rock's Got Lots O' Opps", True, "white")
         self.text_rect = self.text_surf.get_rect(midtop=(400, 100))
         self.text_velocity = -1
@@ -42,8 +42,8 @@ class Title_Screen(GameState):
             (400, 300),
             (500, 275),
             (
-                "..\\assets\\play_button\\play_button.png",
-                "..\\assets\\play_button\\play_button_while_hovering.png",
+                "..//assets//play_button//play_button.png",
+                "..//assets//play_button//play_button_while_hovering.png",
             ),
         )
 
@@ -69,9 +69,9 @@ class Main_Game(GameState):
     def __init__(self, screen: pygame.Surface) -> None:
         super().__init__(screen)
 
-        self.font = pygame.font.Font(r"..\assets\other\Freedom-10eM.ttf", 50)
+        self.font = pygame.font.Font(r"../assets/other/Freedom-10eM.ttf", 50)
 
-        self.dirt_surf = pygame.image.load("..\\assets\\background\\dirt.png")
+        self.dirt_surf = pygame.image.load("..//assets//background//dirt.png")
         self.upper_dirt_rect = self.dirt_surf.get_rect(bottomright=(0, 150))
         self.middle_dirt_rect = self.dirt_surf.get_rect(bottomright=(0, 300))
         self.lower_dirt_rect = self.dirt_surf.get_rect(bottomright=(0, 450))
@@ -120,7 +120,7 @@ class Play_Again_Screen(GameState):
     def __init__(self, screen: pygame.Surface, score: int) -> None:
         super().__init__(screen)
         self.score = score
-        self.score_font = pygame.font.Font("..\\assets\\other\\Freedom-10eM.ttf", 50)
+        self.score_font = pygame.font.Font("..//assets//other//Freedom-10eM.ttf", 50)
 
         with open("data.json", "r") as data_json:
             data = json.load(data_json)
@@ -148,8 +148,8 @@ class Play_Again_Screen(GameState):
             (400, 300),
             (0, 0),
             (
-                "..\\assets\\play_button\\play_button.png",
-                "..\\assets\\play_button\\play_button_while_hovering.png",
+                "..//assets//play_button//play_button.png",
+                "..//assets//play_button//play_button_while_hovering.png",
             ),
         )
 

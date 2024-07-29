@@ -19,7 +19,6 @@ class Button:
         self.clicked = False
     def rectangle_get(self) -> None:
         setattr(self.rect, self.pos_used_to_place, (self.x, self.y))
-        print(f"Button rect: {self.rect}, Image size: {self.current_image.get_size()}")
     
     def update(self, event_info : EventInfo) -> None:
         mouse_pos = event_info["mouse_pos"]
@@ -27,7 +26,6 @@ class Button:
         self.hover = self.rect.collidepoint(mouse_pos)
         
         if self.hover:
-            print("ok")
             self.current_image = self.hovering_image
 
         else:

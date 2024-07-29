@@ -6,7 +6,7 @@ import random
 class Rocky(pygame.sprite.Sprite):
     def __init__(self) -> None:
         super().__init__()
-        self.original_image = pygame.image.load("..\\assets\\rock\\rocky.png")
+        self.original_image = pygame.image.load("..//assets//rock//rocky.png")
         self.original_image = pygame.transform.scale(self.original_image, (400, 200))
         self.image = self.original_image
         self.rect = self.image.get_rect(center=(75, 225))
@@ -36,23 +36,23 @@ class Enemy(pygame.sprite.Sprite):
         super().__init__()
         self.type = type
         if self.type == "knife_rock":
-            knife_rock_1 = pygame.image.load("..\\assets\\knife_rock\\knife_rock_1.png")
-            knife_rock_2 = pygame.image.load("..\\assets\\knife_rock\\knife_rock_1.png")
+            knife_rock_1 = pygame.image.load("..//assets//knife_rock//knife_rock_1.png")
+            knife_rock_2 = pygame.image.load("..//assets//knife_rock//knife_rock_1.png")
             self.frames = [knife_rock_1, knife_rock_2]
         elif self.type == "fbi_missile":
             missile_fly_1 = pygame.image.load(
-                "..\\assets\\fbi_missile\\missile_fly_1.png"
+                "..//assets//fbi_missile//missile_fly_1.png"
             )
             missile_fly_2 = pygame.image.load(
-                "..\\assets\\fbi_missile\\missile_fly_2.png"
+                "..//assets//fbi_missile//missile_fly_2.png"
             )
             self.frames = [missile_fly_1, missile_fly_2]
         elif self.type == "egg":
-            egg = pygame.image.load("..\\assets\\egg\\egg.png")
+            egg = pygame.image.load("..//assets//egg//egg.png")
             self.frames = [egg]
         elif self.type == "bird":
-            bird_fly_1 = pygame.image.load("..\\assets\\bird\\bird_fly_1.png")
-            bird_fly_2 = pygame.image.load("..\\assets\\bird\\bird_fly_2.png")
+            bird_fly_1 = pygame.image.load("..//assets//bird//bird_fly_1.png")
+            bird_fly_2 = pygame.image.load("..//assets//bird//bird_fly_2.png")
             self.frames = [bird_fly_1, bird_fly_2]
         self.animation_index = 0
         self.image = self.frames[self.animation_index]
